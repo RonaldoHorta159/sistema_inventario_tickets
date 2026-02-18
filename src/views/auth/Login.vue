@@ -57,11 +57,15 @@ const handleLogin = async () => {
     <div class="flex flex-col lg:flex-row min-h-screen w-full overflow-hidden font-sans text-slate-900 bg-bg-light">
 
         <div
-            class="relative w-full lg:w-5/12 xl:w-1/2 bg-gradient-to-br from-primary to-primary-dark flex flex-col justify-between p-8 lg:p-12 xl:p-16 text-white overflow-hidden order-first">
+            class="relative w-full lg:w-5/12 xl:w-1/2 flex flex-col justify-between p-8 lg:p-12 xl:p-16 text-white overflow-hidden order-first">
 
-            <div class="absolute inset-0 opacity-10 mix-blend-overlay pointer-events-none"
-                data-alt="Abstract geometric architectural pattern overlay"
+            <div class="absolute inset-0 pointer-events-none"
                 style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBEpYL3ZL0678dhyKq9LiF4h4HJ8GRV3adHvOr2AYV76aJXAYSMLpbQhL0R1-1FQM8HfWhlICHvdc2dDqmCgwcPG4NqdR-h8ZGvElEdq-ipF6Gp3VTQK3yaxVBUCMcvOYRe4WoYwlHoEezcv-cGpAHmEzxDHPRW_muJDNuWcdKKokcIx24d3p4cP6Jh-ZuhqyWSvK4ulocCGai1y32Kl3lxVzETz8WIokUwUHsozGPG1Zf3iX22OsqRXZuwFkAbl9gjAFktj1aplg'); background-size: cover; background-position: center;">
+            </div>
+
+            <div class="absolute inset-0 bg-black/40 pointer-events-none"></div>
+
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/60 to-primary-dark/60 pointer-events-none">
             </div>
 
             <div class="relative z-10 flex items-center gap-3">
@@ -114,7 +118,6 @@ const handleLogin = async () => {
                             <div class="relative group">
                                 <span
                                     class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors material-symbols-outlined text-[20px]">person</span>
-
                                 <input id="username" v-model="email" type="email"
                                     class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
                                     placeholder="nombre@tramusa.com" required />
@@ -126,15 +129,14 @@ const handleLogin = async () => {
                             <div class="relative group">
                                 <span
                                     class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors material-symbols-outlined text-[20px]">lock</span>
-
                                 <input id="password" v-model="password" :type="showPassword ? 'text' : 'password'"
                                     class="w-full pl-10 pr-10 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
                                     placeholder="••••••••" required />
 
                                 <button type="button" @click="showPassword = !showPassword"
                                     class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors cursor-pointer flex items-center justify-center">
-                                    <span class="material-symbols-outlined text-[20px]">
-                                        {{ showPassword ? 'visibility_off' : 'visibility' }}
+                                    <span class="material-symbols-outlined text-[20px]"> {{ showPassword ?
+                                        'visibility_off' : 'visibility' }}
                                     </span>
                                 </button>
                             </div>
@@ -165,8 +167,8 @@ const handleLogin = async () => {
 
                 <div
                     class="flex items-center justify-center gap-2 py-2 px-4 bg-slate-50 rounded-full border border-slate-100 self-center">
-                    <span class="material-symbols-outlined text-green-600 text-[16px]">lock</span>
-                    <span class="text-xs font-medium text-slate-500">Conexión Segura SSL 256-bit</span>
+                    <span class="material-symbols-outlined text-green-600 text-[16px]">lock</span> <span
+                        class="text-xs font-medium text-slate-500">Conexión Segura SSL 256-bit</span>
                 </div>
 
             </div>

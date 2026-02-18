@@ -1,26 +1,37 @@
 @import "tailwindcss";
 @import "tailwindcss-primeui";
+@import "primeicons/primeicons.css";
 
 
 @theme {
-    /* Ajuste exacto a tu diseño institucional */
-    --color-primary: #c60118;
-    /* Rojo Principal */
-    --color-primary-dark: #900112;
-    /* Rojo Oscuro (Hover/Gradiente) */
+    /* Paleta de colores extraída de tu diseño HTML */
+    --color-primary: #c50118;
+    --color-secondary: #d1a021;
 
-    --color-bg-light: #f8f5f6;
-    /* Fondo suave */
-    --color-bg-dark: #230f11;
-    /* Texto oscuro */
+    --color-background-light: #f4f6f8;
+    --color-background-dark: #1a1a1a;
 
-    /* Tipografía */
-    --font-sans: "Public Sans", sans-serif;
-    --font-display: "Public Sans", sans-serif;
+    --color-sidebar-dark: #2d1a1d;
+
+    --color-card-light: #ffffff;
+    --color-card-dark: #2d2d2d;
+
+    --color-text-light: #1e293b;
+    --color-text-dark: #e2e8f0;
+
+    --color-text-muted-light: #64748b;
+    --color-text-muted-dark: #94a3b8;
+
+    /* Fuentes */
+    --font-display: "Roboto", sans-serif;
+    --font-body: "Roboto", sans-serif;
 }
 
-/* Estilos base */
-body {
-    font-family: var(--font-sans);
-    background-color: var(--color-bg-light);
+/* Utilitarios personalizados para sombras */
+@utility shadow-soft {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@utility shadow-gold {
+    box-shadow: 0 0 15px rgba(209, 160, 33, 0.3);
 }
