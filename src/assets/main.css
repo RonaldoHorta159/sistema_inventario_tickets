@@ -1,1 +1,26 @@
 @import "tailwindcss";
+@import "tailwindcss-primeui";
+
+
+@theme {
+    /* Ajuste exacto a tu diseño institucional */
+    --color-primary: #c60118;
+    /* Rojo Principal */
+    --color-primary-dark: #900112;
+    /* Rojo Oscuro (Hover/Gradiente) */
+
+    --color-bg-light: #f8f5f6;
+    /* Fondo suave */
+    --color-bg-dark: #230f11;
+    /* Texto oscuro */
+
+    /* Tipografía */
+    --font-sans: "Public Sans", sans-serif;
+    --font-display: "Public Sans", sans-serif;
+}
+
+/* Estilos base */
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-light);
+}
