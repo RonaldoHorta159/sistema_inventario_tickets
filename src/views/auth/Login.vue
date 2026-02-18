@@ -2,10 +2,12 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useToast } from 'primevue/usetoast';
-import { authService } from '@/services/authSerive';
+import { useAuthStore } from '@/stores/auth';
+
 
 const router = useRouter();
 const toast = useToast();
+const authStore = useAuthStore();
 
 const email = ref('');
 const password = ref('');
@@ -22,22 +24,29 @@ const handleLogin = async () => {
     }
     loading.value = true;
 
-    const { data, error } = await authService.sigIn(email.value, password.value);
+    try {
+        await authStore.login(email.value, password.value)
 
-    if (error) {
         toast.add({
-            severity: 'error', summary: 'Error de acceso', detail: 'Usuario o contraseña incorrectos', life: 3000
+            severity: 'success',
+            summary: `Bienvenido ${authStore.user?.user_metadata?.name || 'Usuario'}`,
+            life: 3000
         })
 
-        loading.value = false;
-        return
+        setTimeout(() => {
+            router.push('/app/dashboard')
+        }, 1000)
+    } catch (error) {
+        toast.add({
+            severity: 'error',
+            summary: 'Error de acceso',
+            detail: 'Usuario o contraseña no encontrados',
+            life: 3000
+        })
+    } finally {
+        loading.value = false
     }
 
-    toast.add({
-        severity: 'success', summary: `Bienvenido ${data.user.user_metadata.name}`, detail: 'Credenciales verificadas corectamente', life: 3000
-    })
-    setTimeout(() => router.push('/app/dashboard'), 1000)
-    loading.value = false;
 }
 
 
