@@ -16,7 +16,7 @@ const toggleMobileMenu = () => {
 // Menú de navegación (ACTUALIZADO: Ahora usa clases de PrimeIcons)
 const menuItems = [
     { label: 'Panel Principal', icon: 'pi pi-home', to: '/app/dashboard' },
-    { label: 'Inventario General', icon: 'pi pi-box', to: '/app/inventario' },
+    { label: 'Inventario', icon: 'pi pi-box', to: '/app/inventario' },
     { label: 'Asignaciones', icon: 'pi pi-id-card', to: '/app/asignaciones' },
     { label: 'Movimientos', icon: 'pi pi-truck', to: '/app/movimientos' },
     { label: 'Búsqueda', icon: 'pi pi-search', to: '/app/busqueda' },

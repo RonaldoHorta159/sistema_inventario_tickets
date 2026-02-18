@@ -49,3 +49,5 @@ __screenshots__/
 .vite/
 
 /node_modules/
+/database/migrations/002_insert_datos_areas.sql
+
