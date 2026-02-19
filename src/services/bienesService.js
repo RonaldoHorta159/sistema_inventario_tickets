@@ -1,13 +1,28 @@
 import { supabase } from "@/supabase";
 
 export const bienesService = {
-    async getBienes() {
-        const { data, error } = await supabase.from('bienes').select(`*, areas (nombre, responsable_nombre), cat_denominaciones(denominacion, codigo_sbn)`).order('created_at', { ascending: false });
+    async getBienes(filters = {}) {
+        let query = supabase.from('bienes').select(`*, areas (id, nombre, responsable_nombre), cat_denominaciones( denominacion, codigo_sbn)`).order('created_at', { ascending: false });
 
-        if (error) throw error
+        if (filters.estado) {
+            query = query.eq('estado', filters.estado)
+        }
 
+        if (filters.estado) {
+            query = query.eq('estado', filters.estado)
+        }
+
+        if (filters.search) {
+            const term = filters.search;
+            query = query.or(`codigo_patrimonial.ilike.%${term}%,codigo_interno.ilike.%${term}%,marca.ilike.%${term}%,numero_serie.ilike.%${term}%`);
+        }
+
+        const { data, error } = await query;
+        if (error) throw error;
         return data
+
     },
+
 
     async getCatalogos() {
         const [areasResponse, categoriasResponse] = await Promise.all([

@@ -17,7 +17,7 @@ const toggleMobileMenu = () => {
 const menuItems = [
     { label: 'Panel Principal', icon: 'pi pi-home', to: '/app/dashboard' },
     { label: 'Inventario', icon: 'pi pi-box', to: '/app/inventario' },
-    { label: 'Asignaciones', icon: 'pi pi-id-card', to: '/app/asignaciones' },
+    { label: 'Lista de bienes', icon: 'pi pi-id-card', to: '/app/inventario/InventarioLista' },
     { label: 'Movimientos', icon: 'pi pi-truck', to: '/app/movimientos' },
     { label: 'Búsqueda', icon: 'pi pi-search', to: '/app/busqueda' },
     { label: 'Reportes', icon: 'pi pi-chart-bar', to: '/app/reportes' },

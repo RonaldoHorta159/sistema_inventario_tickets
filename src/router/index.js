@@ -22,6 +22,11 @@ const routes = [
       {
         path: 'inventario',
         name: 'inventario',
+        component: () => import('../views/inventario/registroBienes.vue')
+      },
+      {
+        path: 'inventario/InventarioLista',
+        name: 'inventarioLista',
         component: () => import('../views/inventario/InventarioLista.vue')
       }
     ]
