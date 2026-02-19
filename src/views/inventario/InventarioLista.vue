@@ -2,6 +2,7 @@
 import { ref, onMounted, computed } from 'vue';
 import { useToast } from 'primevue/usetoast';
 import { bienesService } from '@/services/bienesService';
+import Select from 'primevue/select';
 
 const toast = useToast();
 
@@ -23,6 +24,14 @@ const form = ref({
     id_area: null,           // Área (Select)
     observaciones: ''        // Opcional
 });
+
+const estadosOptions = ref([
+    { label: 'Nuevo', value: 'Nuevo' },
+    { label: 'Bueno', value: 'Bueno' },
+    { label: 'Regular', value: 'Regular' },
+    { label: 'Malo', value: 'Malo' },
+    { label: 'Obsoleto', value: 'Obsoleto' },
+])
 
 // --- CARGA DE DATOS ---
 onMounted(async () => {
@@ -163,14 +172,16 @@ const resetForm = () => {
                                 </div>
                                 <div class="flex flex-col gap-1.5">
                                     <label class="text-sm font-bold text-slate-700">Estado</label>
-                                    <select v-model="form.estado"
+                                    <!-- <select v-model="form.estado"
                                         class="w-full rounded-md border-gray-300 h-10 text-sm shadow-sm">
                                         <option>Nuevo</option>
                                         <option>Bueno</option>
                                         <option>Regular</option>
                                         <option>Malo</option>
                                         <option>Chatarra</option>
-                                    </select>
+                                    </select> -->
+                                    <Select v-model="form.estado" :options="estadosOptions" optionLabel="label"
+                                        optionValue="value" placeholder="Seleccione estado" />
                                 </div>
                             </div>
 
@@ -187,16 +198,19 @@ const resetForm = () => {
                             <div class="flex flex-col gap-2">
                                 <label class="text-sm font-bold text-slate-700">Área / Oficina <span
                                         class="text-primary">*</span></label>
-                                <div class="relative">
+                                <div class="relative w-full">
                                     <i
-                                        class="pi pi-map-marker absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
-                                    <select v-model="form.id_area"
+                                        class="pi pi-map-marker absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 z-10"></i>
+                                    <!-- <select v-model="form.id_area"
                                         class="w-full rounded-md border-gray-300 h-12 pl-10 text-sm focus:border-primary focus:ring-primary shadow-sm">
                                         <option :value="null" disabled>Seleccione una ubicación...</option>
                                         <option v-for="area in areas" :key="area.id" :value="area.id">
                                             {{ area.nombre }}
                                         </option>
-                                    </select>
+                                    </select> -->
+                                    <Select v-model="form.id_area" :options="areas" optionLabel="nombre"
+                                        optionValue="id" placeholder="Seleccione un area" filter
+                                        class="w-full h-12 flex items-center pl-8 border-gray-300 shadow-sm" />
                                 </div>
                             </div>
 
